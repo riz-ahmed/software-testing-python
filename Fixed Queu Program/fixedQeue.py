@@ -20,15 +20,15 @@ class Queue:
         return self.size == 0               # returns True if size is empty
 
     def full(self):
-        return self.size == size_max
+        return self.size == self.max
 
     def enqueue(self,x):
-        if self.size == self.max_size       # exits if max number of elements are reached
+        if self.size == self.max:       # exits if max number of elements are reached
             return False
-        self.data[self.tail] == x
+        self.data[self.tail] = x
         self.size += 1              # increment to signify that there is one more element now
         self.tail += 1
-        if self.tail == self.max_size:
+        if self.tail == self.max:
             self.tail = 0           # resets the position of tail to point again back to the first element holder
         return True                 # if enqueue operation has been successful
 
@@ -38,6 +38,36 @@ class Queue:
         x = self.data[self.head]    # starts dequeue from the first elements onwards
         self.size -= 1              # decreaments as the size is reducing due to dequeue
         self.head += 1              # point to next item
-        if self.head == self.max_size:
+        if self.head == self.max:
             self.head = 0           # after all the dequeue point the head back to first element
         return x
+
+def Test1():
+    q = Queue(3)
+    res = q.empty()
+    if not res:
+        print("test1 NOT OK -- reurned Non Empty Queue")
+        return
+    res = q.enqueue(10)
+    if not res:
+        print("test1 NOT OK -- enqueue element 1 failed")
+        return
+    res = q.enqueue(11)
+    if not res:
+        print("test1 NOT OK -- enqueue element 2 failed")
+        return
+    x = q.dequeue()
+    if x != 10:
+        print("test1 NOT OK-- dequeue element 1 failed")
+        return
+    x = q.dequeue()
+    if x != 11:
+        print("test1 NOT OK -- dequeue element 2 failed")
+        return
+    res = q.empty()
+    if not res:
+        print("test1 NOT OK -- returned NonEmpty Queue after dequeue")
+        return
+    print("test1 OK")
+
+Test1()
