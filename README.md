@@ -6,5 +6,5 @@ A programme called fixedQueue.py is added so that testing techniques can be adde
 
 # Test Techniques
 
-## Decision Based Technique
+## White-box - Decision Based Technique
 Based on the structure of the fixedQueue.py script, a white-box based decision based testing is used to design test cases and execute tests in python
